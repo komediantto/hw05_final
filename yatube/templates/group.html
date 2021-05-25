@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Записи сообщества {{ group.title }}{% endblock %}
+
+{% block header%}{{ group.title }}{% endblock header%}
+{% block content %}
+    <p>{{ group.description }}</p>
+
+    {% for post in page %}
+    {% include "includes/only_post.html" with post=post %}
+    <h5>
+    Автор: {{ post.author }}
+    </h5>
+    {% endfor %}
+
+    {% include "includes/paginator.html" %}
+
+{% endblock %}

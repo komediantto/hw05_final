@@ -1,0 +1,57 @@
+<!-- templates/about/author.html -->
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+{% load user_filters %}
+{% load static %}
+        <link rel="stylesheet" href="{% static 'about/button.css' %}">
+  <main role="main" class="container">
+    <div class="row">
+      <!-- Левый вспомогательный блок -->
+      <div class="col-md-4 mb-3 mt-1">
+        <div class="card">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="h3">
+                  Об авторе
+                </div> 
+              </li>
+              <li class="list-group-item">
+                <div class="h6 text-muted ">
+                <img class='i' src="{% static 'about/instapic-156156.jfif' %}" alt="My image">
+                <br>
+                <div class='h4'>
+                 Любимый <span style="color:red">я</span>, Луговский Артём. Жмякай кнопки!
+                 </div>
+                  <div class="social github">
+                    <a href="https://github.com/komediantto"  target="_blank"><i class="fa fa-github fa-2x"></i></a>
+                  </div>
+                <div class="social twitter">
+                    <a href="https://twitter.com/smoke_killah" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+                </div>
+                <div class="social instagram">
+                    <a href="https://www.instagram.com/komediantto/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+                </div>
+                <div class="social vk">
+                    <a href="https://vk.com/komediantto" target="_blank"><i class="fa fa-vk fa-2x"></i></a>    
+                </div>
+                </div>
+              </li>
+            </ul>                                               
+          </div>                    
+        </div>                
+      </div>
+      <!-- Тело страницы -->
+      <div class="col-md-8">
+        <div class="card-body">                    
+          <div class="card-text">
+            <p class='my-font'>Всем салют, меня зовут Артём &#128513;. Мне 25 лет, и в данный момент я постигаю непростое исскуство backend-разработки вместе с крутейшей платформой <span style="color:red">Я</span>ндекс.Практикум.
+             Люблю животных, хип-хоп, радиоэлектронику, книги, игры и программирование. Был моряком, военным, раздолбаем, рэпером, в общем, всего понемногу. Дальше больше!<br> P.S.<br>Кстати, о животных: вот мои маленькие помошники &#129322;<br>
+             <img class='p' src="{% static 'about/instapic-158874.jfif' %}" alt="Pet's image"> <img class='p' src="{% static 'about/instapic-158954.jfif' %}" alt="Pet's image"> </p>
+          </div>                    
+        </div>                
+      </div>            
+    </div>        
+  </main>
+{% endblock %} 

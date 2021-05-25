@@ -1,0 +1,47 @@
+<!-- templates/about/author.html -->
+{% extends "base.html" %}
+{% block title %}О технологиях проекта{% endblock %}
+{% block content %}
+{% load user_filters %}
+{% load static %}
+        <link rel="stylesheet" href="{% static 'about/button.css' %}">
+  <main role="main" class="container">
+    <div class="row">
+      <!-- Левый вспомогательный блок -->
+      <div class="col-md-3 mb-3 mt-1">
+        <div class="card">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="h3">
+                  О технологиях
+                </div> 
+              </li>
+              <li class="list-group-item">
+                <div class="h6 text-muted">
+                  <ul>
+                    <li><a href="https://www.djangoproject.com/">Django 2.2.6</a></li>
+                    <li><a href="https://html5book.ru/">HTML 5</a></li>
+                    <li><a href="https://bootstrap-4.ru/">Bootstrap 4.3</a></li>
+                    <li><a href="https://www.sqlite.org/index.html">sqlite3</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>                                               
+          </div>                    
+        </div>                
+      </div>
+      <!-- Тело страницы -->
+      <div class="col-md-9">
+        <div class="card-body">                    
+          <div class="card-text">
+            <p class='my-font'>Во главе угла на этом сайте стоит великий и ужасный DJANGO! Дай бог когда-нибудь понять и структурировать все лабиринты его, связать все взаимосвязи его и полностью преисполниться в принятии его. Аминь &#128591;<br><a href="https://www.djangoproject.com/"><img class='p' src="{% static 'about/django.jpg' %}" alt="Tech image"></a><br>
+            Ну, и ещё немного HTML и CSS, в которых ещё разбираться и разбираться, в планах углубиться хорошенько в Bootstrap, ибо интересно.<br><a href="https://html5book.ru/"><img class='p' src="{% static 'about/i.webp' %}" alt="Tech image"></a><a href="https://bootstrap-4.ru/"><img class='p' src="{% static 'about/css.png' %}" alt="Tech image"></a><br>
+            Ну а за данные отвечает sqlite, изи.<br>
+            <a href="https://www.sqlite.org/index.html"><img class='p' src="{% static 'about/screenshot.png' %}" alt="Tech image"></a> </p>
+          </div>                    
+        </div>                
+      </div>            
+    </div>        
+  </main>
+{% endblock %} 

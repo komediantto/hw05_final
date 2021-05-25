@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Последние обновления | Yatube</title>
+    </head>
+    <body>
+        {% extends "base.html" %}
+        {% block title %}Последние обновления на сайте{% endblock %}
+        {% block header %}Последние обновления на сайте{% endblock %}
+        {% block content %}
+          <div class="container">
+          {% include 'includes/menu.html' with index=True %}
+        {% load cache %}
+        {% cache 20 index_page page.number %}
+            {% for post in page %}
+            {% include "includes/only_post.html" with post=post %}
+            <p>{{ linebreaksbr }}</p>
+            <h6>Сообщество: {{ post.group }}, Автор: {{ post.author }}</h6>
+            {% if not forloop.last %}<hr>{% endif %}
+            {% endfor %}
+        {% endcache %}
+            {% if page.has_other_pages %}
+                {% include "includes/paginator.html" with items=page paginator=paginator %}
+            {% endif %}
+          </div>
+        {% endblock %} 
+    </body>
+</html> 
