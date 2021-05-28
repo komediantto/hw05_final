@@ -45,7 +45,7 @@ def profile(request, username):
     user = request.user
     author = get_object_or_404(User, username=username)
     following = Follow.objects.filter(
-        author=author, user=request.user).exists()
+        author=author.id, user=request.user.id).exists()
     posts = author.posts.all()
     count_posts = posts.count()
     paginator = Paginator(posts, 10)
