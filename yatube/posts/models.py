@@ -29,7 +29,11 @@ class Post(models.Model):
                               null=True,
                               verbose_name='Выбери сообщество',
                               help_text='Нужно выбрать сообщество')
-    image = models.ImageField(upload_to='posts/', blank=True, null=True)
+    image = models.ImageField(upload_to='posts/',
+                              blank=True,
+                              null=True,
+                              verbose_name='Добавьте изображение',
+                              help_text='Здесь можно добавить изображение')
 
     class Meta:
         ordering = ['-pub_date']
@@ -63,3 +67,7 @@ class Follow(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='following'
     )
+
+    class Meta:
+        constraints = models.UniqueConstraint(fields=['user', 'author'],
+                                              name='author_constraint')

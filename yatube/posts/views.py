@@ -44,6 +44,8 @@ def new_post(request):
 def profile(request, username):
     user = request.user
     author = get_object_or_404(User, username=username)
+    following = (request.user.is_authenticated and Follow.objects.filter(
+                 author=author, user=request.user).exists())
     posts = author.posts.all()
     count_posts = posts.count()
     paginator = Paginator(posts, 10)
@@ -54,6 +56,7 @@ def profile(request, username):
         'author': author,
         'page': page,
         'count_posts': count_posts,
+        'following': following
     })
 
 
@@ -67,7 +70,6 @@ def post_view(request, username, post_id):
         'author': author,
         'count_posts': count_posts,
         'post': post,
-        'username': author.username,
         'comments': comments,
         'form': form
     })
@@ -84,7 +86,6 @@ def post_edit(request, username, post_id):
                     instance=post)
     if form.is_valid():
         post = form.save(commit=False)
-        post.author = request.user
         post.save()
         return redirect('posts:post',
                         username=request.user.username,

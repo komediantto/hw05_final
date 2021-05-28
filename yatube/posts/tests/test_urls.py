@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
+
 from posts.models import Group, Post
 
 User = get_user_model()
@@ -82,6 +83,12 @@ class StaticURLTests(TestCase):
         self.assertRedirects(
             response, f'/{self.author.username}/{self.post.id}/')
 
+    def test_follow_page_for_guest_client(self):
+        response = self.guest_client.get('/follow/')
+        self.assertRedirects(
+            response, '/auth/login/?next=/follow/'
+        )
+
     def test_urls_uses_correct_template(self):
         """URL-адрес использует соответствующий шаблон."""
         templates_url_names = {
@@ -90,6 +97,7 @@ class StaticURLTests(TestCase):
             '/new/': 'post_create_and_edit.html',
             '': 'index.html',
             '/group/test-slug/': 'group.html',
+            '/follow/': 'follow.html'
         }
         for url, template in templates_url_names.items():
             with self.subTest(url=url):
