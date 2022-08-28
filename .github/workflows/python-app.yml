@@ -43,7 +43,7 @@ jobs:
         flake8 tests --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
     - name: Check migrations
       run: |
-        python yatube/manage.py makemigrations --check --no-input
+        python yatube/yatube/manage.py makemigrations --check --no-input
     - name: Test with pytest
       env:
         SECRET_KEY: "5UP3R-53CR3T-K3Y-FR0M-TurboKach"
